@@ -44,6 +44,17 @@
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.12.4</version>
+                <configuration>
+                    <argLine>-Dusername=1234</argLine>
+                    <argLine>-Duserpassword=1234567</argLine>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 
