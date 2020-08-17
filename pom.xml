@@ -8,6 +8,11 @@
     <artifactId>G44-Automation</artifactId>
     <version>0.0.1</version>
 
+    <properties>
+        <from.prop>from-prop-value</from.prop>
+        <override.prop>not-override-prop-value</override.prop>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -50,8 +55,8 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.12.4</version>
                 <configuration>
-                    <argLine>-Dusername=1234</argLine>
-                    <argLine>-Duserpassword=1234567</argLine>
+<!--                    <argLine>-Duser=justTest -Dpass=1234123456</argLine>-->
+
                 </configuration>
             </plugin>
 
