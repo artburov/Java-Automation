@@ -1,6 +1,6 @@
-21:09:01 06.08.2020 Application: INFO -> [One, Two, Three, Four]
-21:09:01 06.08.2020 Application: ERROR-> Массив не определён. Пожалуйста проверьте корректность вводимых значений
-21:09:47 06.08.2020 Application: INFO -> [One, Two, Three, Four]
-21:09:47 06.08.2020 Application: ERROR-> Массив не определён. Пожалуйста проверьте корректность вводимых значений
-21:12:31 06.08.2020 Application: INFO -> [One, Two, Three, Four]
-21:12:31 06.08.2020 Application: ERROR-> Массив не определён. Пожалуйста проверьте корректность вводимых значений
+21:09:01 06.08.2020 JavaStudy.Application: INFO -> [One, Two, Three, Four]
+21:09:01 06.08.2020 JavaStudy.Application: ERROR-> Массив не определён. Пожалуйста проверьте корректность вводимых значений
+21:09:47 06.08.2020 JavaStudy.Application: INFO -> [One, Two, Three, Four]
+21:09:47 06.08.2020 JavaStudy.Application: ERROR-> Массив не определён. Пожалуйста проверьте корректность вводимых значений
+21:12:31 06.08.2020 JavaStudy.Application: INFO -> [One, Two, Three, Four]
+21:12:31 06.08.2020 JavaStudy.Application: ERROR-> Массив не определён. Пожалуйста проверьте корректность вводимых значений

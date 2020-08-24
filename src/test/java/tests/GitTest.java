@@ -1,14 +1,16 @@
 package tests;
 
-import org.junit.After;
 import org.junit.Before;
+import org.junit.FixMethodOrder;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 import pages.*;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class GitTest extends BaseTest {
 
     private LoginPage login;
@@ -35,7 +37,7 @@ public class GitTest extends BaseTest {
     }
 
     @Test
-    public void gitRepositoryTest() {
+    public void a_gitRepositoryTest() {
         login.positiveAuthentication()
                 .validateUrl()
                 .searchNeededRepo()
@@ -45,6 +47,29 @@ public class GitTest extends BaseTest {
         log.info("Version of selenium-java is " + repository.repoSeleniumVersion());
 
         logout.signOut();
-        log.info("Logout from Git was done on " + (new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss")).format(new Date()));
+        log.info("Logout from Git was done on " +
+                (new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss")).format(new Date()));
+    }
+
+    @Test
+    public void b_extendedGitTest() throws InterruptedException {
+        login.positiveAuthentication()
+                .validateUrl()
+                .searchNeededRepo()
+                .findSpecifiedRepo()
+                .listOfTabs()
+                .goToIssueTab()
+                .clickOnNewIssueBtn()
+                .inputTitle()
+                .inputComment()
+                .submitNewIssue()
+                .returnToIssueTab()
+                .verifyIssueTitile()
+                .returnToIssueTab()
+                .verifyIssueComment();
+
+        logout.signOut();
+        log.info("Logout from Git after an issue creation was done on " +
+                (new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss")).format(new Date()));
     }
 }
