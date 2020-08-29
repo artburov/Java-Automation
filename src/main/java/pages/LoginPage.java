@@ -1,10 +1,11 @@
 package pages;
 
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class LoginPage extends BasePage {
+import static org.junit.Assert.*;
+
+public class LoginPage extends NavigationBar {
     //Login locators
     private final By userNameField = By.id("login_field");
     private final By userPasswordField = By.id("password");
@@ -27,7 +28,7 @@ public class LoginPage extends BasePage {
         driver.findElement(signInButton).click();
     }
 
-    public  MainPage positiveAuthentication(){
+    public MainPage positiveAuthentication() {
         validateCredentialsFields();
 
         driver.findElement(userNameField).sendKeys(System.getProperty("user"));
@@ -37,13 +38,13 @@ public class LoginPage extends BasePage {
     }
 
     public void incorrectCredentialsMessage() {
-        Assert.assertEquals("Incorrect username or password.", driver.findElement(errorMessage).getText());
+        assertEquals("Incorrect username or password.", driver.findElement(errorMessage).getText());
     }
 
     public void validateCredentialsFields() {
-        Assert.assertTrue(driver.findElement(userNameField).isDisplayed());
-        Assert.assertTrue(driver.findElement(userPasswordField).isDisplayed());
-        Assert.assertTrue(driver.findElement(signInButton).isDisplayed());
+        assertTrue(driver.findElement(userNameField).isDisplayed());
+        assertTrue(driver.findElement(userPasswordField).isDisplayed());
+        assertTrue(driver.findElement(signInButton).isDisplayed());
     }
 }
 

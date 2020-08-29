@@ -1,8 +1,9 @@
 package pages;
 
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
+import static org.junit.Assert.*;
 
 public class MainPage extends BasePage {
     //Search the specified repository locators
@@ -14,11 +15,11 @@ public class MainPage extends BasePage {
     }
 
     public MainPage validateUrl() {
-        Assert.assertEquals("https://github.com/", driver.getCurrentUrl().toString());
+        assertEquals("https://github.com/", driver.getCurrentUrl().toString());
         return this;
     }
 
-    public SearchResultPage searchNeededRepo(){
+    public SearchResultPage searchNeededRepo() {
         validateTrue(searchRepo);
 
         driver.findElement(searchRepo).click();
@@ -32,11 +33,10 @@ public class MainPage extends BasePage {
     }
 
     public void validateTrue(By element) {
-        Assert.assertTrue(driver.findElement(element).isDisplayed());
+        assertTrue(driver.findElement(element).isDisplayed());
     }
 
     public void validateFalse(By element) {
-        Assert.assertFalse(driver.findElement(element).isDisplayed());
+        assertFalse(driver.findElement(element).isDisplayed());
     }
-
 }

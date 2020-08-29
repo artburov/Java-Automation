@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class IssuePage extends BasePage {
+public class IssuePage extends NavigationBar {
 
     private final By titleField = By.xpath("//input[@id='issue_title']");
     private final By commentField = By.xpath("//textarea[@id='issue_body']");

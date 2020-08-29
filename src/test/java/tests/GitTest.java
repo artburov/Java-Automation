@@ -5,10 +5,10 @@ import org.junit.FixMethodOrder;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
-import pages.*;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import pages.LoginPage;
+import pages.MainPage;
+import pages.RepositoryPage;
+import pages.SearchResultPage;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class GitTest extends BaseTest {
@@ -17,16 +17,14 @@ public class GitTest extends BaseTest {
     private MainPage main;
     private SearchResultPage result;
     private RepositoryPage repository;
-    private LogoutPage logout;
 
 
     @Before
-    public void init() {
+    public void initialization() {
         login = new LoginPage(this.driver);
         main = new MainPage(this.driver);
         result = new SearchResultPage(this.driver);
         repository = new RepositoryPage(this.driver);
-        logout = new LogoutPage(this.driver);
     }
 
     @Ignore
@@ -42,13 +40,8 @@ public class GitTest extends BaseTest {
                 .validateUrl()
                 .searchNeededRepo()
                 .findSpecifiedRepo()
-                .findPomFile();
-
-        log.info("Version of selenium-java is " + repository.repoSeleniumVersion());
-
-        logout.signOut();
-        log.info("Logout from Git was done on " +
-                (new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss")).format(new Date()));
+                .findPomFile()
+                .signOut();
     }
 
     @Test
@@ -64,12 +57,9 @@ public class GitTest extends BaseTest {
                 .inputComment()
                 .submitNewIssue()
                 .returnToIssueTab()
-                .verifyIssueTitile()
+                .verifyIssueTitle()
                 .returnToIssueTab()
-                .verifyIssueComment();
-
-        logout.signOut();
-        log.info("Logout from Git after an issue creation was done on " +
-                (new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss")).format(new Date()));
+                .verifyIssueComment()
+                .signOut();
     }
 }
