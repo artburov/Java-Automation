@@ -16,23 +16,22 @@ public abstract class NavigationBar extends BasePage {
     //log-out locators
     private final By avatarImage = By.xpath("//*[@aria-label='View profile and more']");
     private final By signOut = By.xpath("//button[contains(text(),'Sign out')]");
-    private final By signOutAssertText = By.xpath("//h1[contains(text(),'Built for developers')]");
 
 
     public NavigationBar(WebDriver driver) {
         super(driver);
     }
 
-    public LoginPage signOut() {
+    public HomePage signOut() {
         validateTrue(avatarImage);
         driver.findElement(avatarImage).click();
         driver.findElement(signOut).click();
 
-        validateTrue(signOutAssertText);
+        validateTrue(new HomePage(driver).signOutAssertText);
 
         log.info("Logout from Git was done on " +
                 (new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss")).format(new Date()));
-        return new LoginPage(this.driver);
+        return new HomePage(this.driver);
     }
 
     public void validateTrue(By element) {

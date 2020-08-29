@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 
 import static org.junit.Assert.*;
 
-public class SearchResultPage extends BasePage {
+public class SearchResultPage extends NavigationBar {
     //Search result for needed repository locators
     private final By repoKuso = By.xpath("//a[contains(text(),'BKuso')]");
     private final By repoKusoTitle = By.xpath("//a[contains(text(),'G44Automation') and @href='/BKuso/G44Automation']");

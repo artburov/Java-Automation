@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 
 import static org.junit.Assert.*;
 
-public class MainPage extends BasePage {
+public class MainPage extends NavigationBar {
     //Search the specified repository locators
     private final By searchRepo = By.xpath("//input[@name= 'q' and @placeholder='Search or jump to…']");
     private final By needRepo = By.xpath("//div[contains(text(),'G44Automation')]");

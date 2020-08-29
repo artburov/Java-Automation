@@ -1,8 +1,9 @@
 package pages;
 
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
+import static org.junit.Assert.assertTrue;
 
 public class IssuePage extends NavigationBar {
 
@@ -36,6 +37,6 @@ public class IssuePage extends NavigationBar {
     }
 
     public void validateTrue(By element) {
-        Assert.assertTrue(driver.findElement(element).isDisplayed());
+        assertTrue(driver.findElement(element).isDisplayed());
     }
 }

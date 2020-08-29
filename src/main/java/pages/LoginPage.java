@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 
 import static org.junit.Assert.*;
 
-public class LoginPage extends NavigationBar {
+public class LoginPage extends BasePage {
     //Login locators
     private final By userNameField = By.id("login_field");
     private final By userPasswordField = By.id("password");

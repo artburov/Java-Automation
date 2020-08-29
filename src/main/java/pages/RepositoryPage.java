@@ -4,6 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -23,7 +26,7 @@ public class RepositoryPage extends NavigationBar {
         super(driver);
     }
 
-    public LoginPage findPomFile() {
+    public RepositoryPage findPomFile() {
         validateTrue(repoKusoPomFile);
         driver.findElement(repoKusoPomFile).click();
 
@@ -33,21 +36,30 @@ public class RepositoryPage extends NavigationBar {
                 .trim()
                 .substring(9, 17));
         log.info("Version of selenium-java is " + repoSeleniumVersion());
-        return new LoginPage(this.driver);
+        return this;
     }
 
     public RepositoryPage listOfTabs() {
         validateTrue(allTabsList);
-        int counter = 1;
+        AtomicInteger counter = new AtomicInteger(1);
 
-        for (WebElement element : driver.findElements(allTabsList)) {
-            if (element.getText().matches(".*[^0-9].*")) {
-                System.out.println("Name of tab #" + counter++ + ": " + element.getText()
+        //Using stream and lambda
+        List<WebElement> tabsItems = driver.findElements(allTabsList);
+        tabsItems.stream()
+                .filter(item -> item.getText().matches(".*[^0-9].*"))
+                .forEach(item -> System.out.println("Name of tab #" + counter.getAndIncrement() + ": " + item.getText()
                         .replaceAll("\\d", "")
-                        .trim());
-            } else
-                System.out.println("Name of tab is: " + element.getText());
-        }
+                        .trim()));
+
+        //Or the same as above but using ForEach loop
+//        for (WebElement element : driver.findElements(allTabsList)) {
+//            if (element.getText().matches(".*[^0-9].*")) {
+//                System.out.println("Name of tab #" + counter++ + ": " + element.getText()
+//                        .replaceAll("\\d", "")
+//                        .trim());
+//            } else
+//                System.out.println("Name of tab is: " + element.getText());
+//        }
         return this;
     }
 
@@ -89,6 +101,10 @@ public class RepositoryPage extends NavigationBar {
     }
 
     public String repoSeleniumVersion() {
-        return driver.findElement(repoKusoSeleniumVersion).getText().trim().substring(9, 17);
+        return driver.findElement(repoKusoSeleniumVersion)
+                .getText()
+                .replaceAll(" ", "")
+                .replaceAll("<version>","")
+                .replaceAll("</version>", "");
     }
 }
