@@ -1,9 +1,10 @@
-package tests;
+package tests.kusoGit;
 
 import org.junit.*;
 import org.junit.runners.MethodSorters;
 import pages.LoginPage;
 import pages.MainPage;
+import tests.BaseTest;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class GitTest extends BaseTest {
@@ -28,7 +29,7 @@ public class GitTest extends BaseTest {
     public void a_gitRepositoryTest() {
         main.validateUrl()
                 .searchNeededRepo()
-                .findSpecifiedRepo()
+                .findKusoRepo()
                 .findPomFile();
     }
 
@@ -36,16 +37,16 @@ public class GitTest extends BaseTest {
     public void b_extendedGitTest() {
         main.validateUrl()
                 .searchNeededRepo()
-                .findSpecifiedRepo()
+                .findKusoRepo()
                 .listOfTabs()
-                .goToIssueTab()
+                .openProjectsIssues()
                 .clickOnNewIssueBtn()
                 .inputTitle()
                 .inputComment()
                 .submitNewIssue()
-                .returnToIssueTab()
+                .openProjectsIssues()
                 .verifyIssueTitle()
-                .returnToIssueTab()
+                .openProjectsIssues()
                 .verifyIssueComment();
     }
 

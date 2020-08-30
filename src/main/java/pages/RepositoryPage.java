@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import pages.workPanel.WorkPanelMenu;
 
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -10,16 +11,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class RepositoryPage extends NavigationBar {
+public class RepositoryPage extends WorkPanelMenu {
     //Inside the repository locators
     private final By repoKusoPomFile = By.xpath("//a[@title='pom.xml']");
     private final By repoKusoSeleniumVersion = By.xpath("//td[@id='LC27' and text()='>3.141.59</' ]");
-
-    private final By newIssueBtn = By.xpath("//span[contains(text(), 'New issue')]");
-
-    //Issue lists
-    private final By addedIssue = By.xpath("//a[contains(text(),'Test issue')]");
-    private final By addedComment = By.xpath("//p[contains(text(),'Testing of addition a comment')]");
 
 
     public RepositoryPage(WebDriver driver) {
@@ -63,39 +58,6 @@ public class RepositoryPage extends NavigationBar {
         return this;
     }
 
-    public RepositoryPage goToIssueTab() {
-        validateTrue(issueTab);
-        driver.findElement(issueTab).click();
-        return this;
-    }
-
-    public IssuePage clickOnNewIssueBtn() {
-        validateTrue(newIssueBtn);
-        driver.findElement(newIssueBtn).click();
-        return new IssuePage(this.driver);
-    }
-
-    public RepositoryPage verifyIssueTitle() {
-        validateTrue(addedIssue);
-
-        assertTrue(driver.findElement(addedIssue).getText().contains("Test issue"));
-        return this;
-    }
-
-    public RepositoryPage verifyIssueComment() {
-        validateTrue(addedIssue);
-        driver.findElement(addedIssue).click();
-
-        assertTrue(driver.findElement(addedComment).getText().contains("Testing of addition a comment"));
-        return this;
-    }
-
-    public RepositoryPage returnToIssueTab() {
-        validateTrue(issueTab);
-        driver.findElement(issueTab).click();
-        return this;
-    }
-
     public void validateTrue(By element) {
         assertTrue(driver.findElement(element).isDisplayed());
     }
@@ -104,7 +66,7 @@ public class RepositoryPage extends NavigationBar {
         return driver.findElement(repoKusoSeleniumVersion)
                 .getText()
                 .replaceAll(" ", "")
-                .replaceAll("<version>","")
+                .replaceAll("<version>", "")
                 .replaceAll("</version>", "");
     }
 }

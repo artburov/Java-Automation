@@ -8,11 +8,7 @@ import java.util.Date;
 
 import static org.junit.Assert.assertTrue;
 
-public abstract class NavigationBar extends BasePage {
-    //Tabs locators
-    protected final By allTabsList = By.xpath("//ul[@class = 'UnderlineNav-body list-style-none ']/li");
-    protected final By issueTab = By.xpath("//span[contains(text(), 'Issues')]");
-
+public abstract class NavigationBar extends HomePage {
     //log-out locators
     private final By avatarImage = By.xpath("//*[@aria-label='View profile and more']");
     private final By signOut = By.xpath("//button[contains(text(),'Sign out')]");
@@ -27,7 +23,7 @@ public abstract class NavigationBar extends BasePage {
         driver.findElement(avatarImage).click();
         driver.findElement(signOut).click();
 
-        validateTrue(new HomePage(driver).signOutAssertText);
+        validateTrue(signOutAssertText);
 
         log.info("Logout from Git was done on " +
                 (new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss")).format(new Date()));
