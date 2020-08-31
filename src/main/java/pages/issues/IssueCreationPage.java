@@ -47,7 +47,7 @@ public class IssueCreationPage extends WorkPanelMenu {
         return new RepositoryPage(this.driver);
     }
 
-    private By selectLabel(String label) {
+    private By selectLabel(String... label) {
         return By.xpath(String.format("//span[contains(text(),'%s')]", label));
     }
 
