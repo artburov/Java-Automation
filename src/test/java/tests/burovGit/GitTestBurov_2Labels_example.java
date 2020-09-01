@@ -16,29 +16,31 @@ import java.util.Collection;
 
 @RunWith(Parameterized.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class GitTestBurov_1Label extends BaseTest {
+public class GitTestBurov_2Labels_example extends BaseTest {
 
 
     private MainPage main;
 
     private final String title;
     private final String comment;
-    private final String label;
+    private final String labelOne;
+    private final String labelTwo;
 
 
     @Parameterized.Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
-                {"Test issue", "Testing of addition a comment", "bug"},
-                {"Test issue", "Testing of addition a comment", "documentation"},
-                {"Test issue", "Testing of addition a comment", "question"},
+                {"Test issue", "Testing of addition a comment", "bug", "documentation"},
+                {"Test issue", "Testing of addition a comment", "bug", "question"},
+                {"Test issue", "Testing of addition a comment", "documentation", "question"},
         });
     }
 
-    public GitTestBurov_1Label(String title, String comment, String label) {
+    public GitTestBurov_2Labels_example(String title, String comment, String label1, String label2) {
         this.title = title;
         this.comment = comment;
-        this.label = label;
+        labelOne = label1;
+        labelTwo = label2;
     }
 
 
@@ -53,7 +55,7 @@ public class GitTestBurov_1Label extends BaseTest {
                 .searchBurovRepo()
                 .openProjectsIssues()
                 .clickOnNewIssueBtn()
-                .createIssue(this.title, this.comment, this.label)
+//                .createIssue(this.title, this.comment, this.labelOne, this.labelTwo)
                 .openProjectsIssues()
                 .verifyIssueTitle()
                 .openProjectsIssues()

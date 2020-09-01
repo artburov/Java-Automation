@@ -16,7 +16,7 @@ import java.util.Collection;
 
 @RunWith(Parameterized.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class GitTestBurov_3Labels extends BaseTest {
+public class GitTestBurov_3Labels_example extends BaseTest {
 
 
     private MainPage main;
@@ -35,7 +35,7 @@ public class GitTestBurov_3Labels extends BaseTest {
         });
     }
 
-    public GitTestBurov_3Labels(String title, String comment, String label1, String label2, String label3) {
+    public GitTestBurov_3Labels_example(String title, String comment, String label1, String label2, String label3) {
         this.title = title;
         this.comment = comment;
         labelOne = label1;
@@ -55,7 +55,7 @@ public class GitTestBurov_3Labels extends BaseTest {
                 .searchBurovRepo()
                 .openProjectsIssues()
                 .clickOnNewIssueBtn()
-                .createIssue(this.title, this.comment, this.labelOne, this.labelTwo, this.labelThree)
+//                .createIssue(this.title, this.comment, this.labelOne, this.labelTwo, this.labelThree)
                 .openProjectsIssues()
                 .verifyIssueTitle()
                 .openProjectsIssues()

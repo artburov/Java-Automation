@@ -7,6 +7,7 @@ import pages.RepositoryPage;
 import pages.workPanel.WorkPanelMenu;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class IssueCreationPage extends WorkPanelMenu {
     private final By titleField = By.xpath("//input[@id='issue_title']");
@@ -51,7 +52,7 @@ public class IssueCreationPage extends WorkPanelMenu {
         return By.xpath(String.format("//span[contains(text(),'%s')]", label));
     }
 
-    public IssuePage createIssue(String title, String comment, String... labels) {
+    public IssuePage createIssue(String title, String comment, List<String> labels) {
         validateTrue(titleField);
         validateTrue(commentField);
         validateTrue(labelMenu);
@@ -64,7 +65,7 @@ public class IssueCreationPage extends WorkPanelMenu {
 
         driver.findElement(labelMenu).click();
 
-        Arrays.stream(labels).forEach(label -> {
+        labels.forEach(label -> {
             Assert.assertTrue(this.driver.findElement(selectLabel(label)).isDisplayed());
             this.driver.findElement(selectLabel(label)).click();
         });
