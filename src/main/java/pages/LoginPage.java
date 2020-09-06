@@ -37,8 +37,23 @@ public class LoginPage extends BasePage {
         return new MainPage(this.driver);
     }
 
-    public void incorrectCredentialsMessage() {
+    public LoginPage authCredentialsFromFile(String userLogin, String userPassword, Boolean fromFileTxt) {
+        log.info(System.out.format("Used login %s and password %s ", userLogin, userPassword));
+        validateCredentialsFields();
+        if (fromFileTxt) {
+            driver.findElement(userNameField).sendKeys(userLogin);
+            driver.findElement(userPasswordField).sendKeys(userPassword);
+        } else {
+            driver.findElement(userNameField).sendKeys(System.getProperty("user"));
+            driver.findElement(userPasswordField).sendKeys(System.getProperty("pass"));
+        }
+        driver.findElement(signInButton).click();
+        return new LoginPage(this.driver);
+    }
+
+    public MainPage incorrectCredentialsMessage() {
         assertEquals("Incorrect username or password.", driver.findElement(errorMessage).getText());
+        return new MainPage(this.driver);
     }
 
     public void validateCredentialsFields() {

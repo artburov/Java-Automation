@@ -22,6 +22,11 @@ public class MainPage extends WorkPanelMenu {
         return this;
     }
 
+    public MainPage validateIncorrectCredentials() {
+        assertEquals("https://github.com/", driver.getCurrentUrl().toString());
+        return this;
+    }
+
     public SearchResultPage searchNeededRepo() {
         validateTrue(searchRepo);
 
