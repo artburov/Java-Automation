@@ -3,11 +3,14 @@ package tests;
 import helpers.FileReader;
 import org.junit.Ignore;
 import org.junit.Test;
-import sun.reflect.generics.tree.Tree;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+
+import static helpers.ExcelReader.readColumnFromExcel;
 
 public class Debug {
 
@@ -27,6 +30,7 @@ public class Debug {
         }
 
     }
+
 
     @Test
     public void readFromFile() {
@@ -51,5 +55,13 @@ public class Debug {
             });
             System.out.println(saveData);
         }
+    }
+
+    @Ignore
+    @Test
+    public void readFromExcel() {
+        List<String> result = readColumnFromExcel(System.getProperty("user.dir") +
+                "/src/main/resources/data/excelParam.xlsx", "Sheet1");
+        System.out.println(result);
     }
 }

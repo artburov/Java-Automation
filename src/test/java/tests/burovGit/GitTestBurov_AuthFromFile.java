@@ -9,9 +9,9 @@ import org.junit.runners.Parameterized;
 import pages.LoginPage;
 import tests.BaseTest;
 
-import java.util.*;
+import java.util.Collection;
 
-import static helpers.FileReader.loadDataForProvider;
+import static helpers.FileReader.loadDataForAuthProvider;
 
 @RunWith(Parameterized.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -22,23 +22,11 @@ public class GitTestBurov_AuthFromFile extends BaseTest {
     private final String userLogin;
     private final String userPassword;
     private final Boolean fromTxt;
-    private final boolean fromXls;
 
     @Parameterized.Parameters
     public static Collection<Object[]> data() {
 
-        Map<String, String> testData = loadDataForProvider();
-        Object[][] result = new Object[testData.keySet().size()][2];
-        List<String> logins = new ArrayList<>(testData.keySet());
-        for (int i = 0; i < testData.keySet().size(); i++) {
-            result[i][0] = logins.get(i);
-            result[i][1] = testData.get(logins.get(i));
-        }
-//        testData.forEach((key, value) -> {
-//
-//        });
-
-        return Arrays.asList(result);
+        return loadDataForAuthProvider();
     }
 
 
@@ -46,7 +34,6 @@ public class GitTestBurov_AuthFromFile extends BaseTest {
         this.userLogin = userLogin;
         this.userPassword = userPassword;
         this.fromTxt = true;
-        this.fromXls = false;
     }
 
     @Before
@@ -56,7 +43,7 @@ public class GitTestBurov_AuthFromFile extends BaseTest {
 
     @Test
     public void negativeAuth() {
-        login.authCredentialsFromFile(this.userLogin, this.userPassword, this.fromTxt )
+        login.authCredentialsFromFile(this.userLogin, this.userPassword, this.fromTxt)
                 .incorrectCredentialsMessage();
     }
 
