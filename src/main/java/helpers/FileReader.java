@@ -6,13 +6,12 @@ import org.apache.logging.log4j.Logger;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 
 public class FileReader {
-    protected final static Logger log = LogManager.getLogger("Filer reader helper");
-
+    private final static Logger log = LogManager.getLogger("File reader helper");
 
     public static List<String> linesFromFile(String filePath) {
         try {
@@ -23,13 +22,33 @@ public class FileReader {
         }
     }
 
-    public static Map<String, String> loadDataForProvider() {
+    public static List<Object[]> loadDataForAuthProvider() {
         String path = System.getProperty("user.dir") + "/src/main/resources/data/authParameters.txt";
 
-        Map<String, String> result = new TreeMap<>();
+        List<Object[]> result = new ArrayList<>();
         linesFromFile(path).forEach(line -> {
-            String[] temp = line.split(":");
-            result.put(temp[0], temp[1]);
+            String[] firstPart = line.split(":");
+            Object[] temp = new Object[]{
+                    firstPart[0].trim(), firstPart[1].trim()
+            };
+
+            result.add(temp);
+        });
+        return result;
+    }
+
+    public static List<Object[]> loadDataForCreateIssuesProvider() {
+        String path = System.getProperty("user.dir") + "/src/main/resources/data/gitCreateIssues.txt";
+
+        List<Object[]> result = new ArrayList<>();
+        linesFromFile(path).forEach(value -> {
+            String[] firstPart = value.split(", ");
+            String[] secondPart = firstPart[2].split(";");
+            Object[] temp = new Object[]{
+                    firstPart[0].trim(), firstPart[1].trim(), Arrays.asList(secondPart)
+            };
+            result.add(temp);
+
         });
         return result;
     }
