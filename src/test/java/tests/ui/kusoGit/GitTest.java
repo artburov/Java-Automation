@@ -25,6 +25,8 @@ public class GitTest extends BaseTest {
         login.incorrectCredentialsMessage();
     }
 
+
+    @Ignore
     @Test
     public void a_gitRepositoryTest() {
         main.validateUrl()
@@ -33,6 +35,7 @@ public class GitTest extends BaseTest {
                 .findPomFile();
     }
 
+    @Ignore
     @Test
     public void b_extendedGitTest() {
         main.validateUrl()
