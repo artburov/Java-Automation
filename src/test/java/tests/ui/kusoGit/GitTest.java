@@ -1,10 +1,10 @@
-package tests.kusoGit;
+package tests.ui.kusoGit;
 
 import org.junit.*;
 import org.junit.runners.MethodSorters;
 import pages.LoginPage;
 import pages.MainPage;
-import tests.BaseTest;
+import tests.ui.BaseTest;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class GitTest extends BaseTest {

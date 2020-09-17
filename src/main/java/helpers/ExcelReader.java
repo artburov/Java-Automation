@@ -43,13 +43,18 @@ public class ExcelReader {
         try {
             XSSFWorkbook workbook = new XSSFWorkbook(new FileInputStream(filePath));
             XSSFSheet sheet = workbook.getSheet(sheetName);
+
+            //loop for all rows
             for (int i = 0; i <= sheet.getLastRowNum(); i++) {
 
                 Object[] temp = new Object[3];
                 List<String> labels = new ArrayList<>();
 
+                //loop for all columns
                 for (int a = 0; a < sheet.getRow(i).getLastCellNum(); a++) {
                     XSSFCell cell = sheet.getRow(i).getCell(a);
+
+                    //save data from first and second columns (title and comments) to the temporary array
                     if (a < 2) {
                         if (isCellString(cell)) {
                             temp[a] = cell.getStringCellValue();
@@ -57,11 +62,13 @@ public class ExcelReader {
                             temp[a] = (int) cell.getNumericCellValue();
                         }
                     } else {
+                        //other data are saving to the temporary label array
                         labels.add(isCellString(cell)
-                                ? sheet.getRow(i).getCell(a).getStringCellValue()
-                                : String.valueOf(sheet.getRow(i).getCell(a).getNumericCellValue()));
+                                ? cell.getStringCellValue()
+                                : String.valueOf(cell.getNumericCellValue()));
                     }
                 }
+                //0 and 1 are title and comments data and 3 are the labels data
                 temp[2] = labels;
                 result.add(temp);
             }

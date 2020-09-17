@@ -48,6 +48,23 @@
             <version>4.1.2</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>4.3.1</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!--Json schema validation-->
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>json-schema-validator</artifactId>
+            <version>4.3.1</version>
+            <scope>test</scope>
+        </dependency>
+
+
     </dependencies>
 
     <build>
@@ -68,7 +85,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.12.4</version>
                 <configuration>
-                    <!--                    <argLine>-Duser=justTest -Dpass=1234123456</argLine>-->
+                    <!-- <argLine>-Duser=justTest -Dpass=1234123456</argLine>-->
 
                 </configuration>
             </plugin>

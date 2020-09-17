@@ -1,4 +1,4 @@
-package tests.burovGit;
+package tests.ui.burovGit;
 
 import org.junit.After;
 import org.junit.Before;
@@ -9,7 +9,7 @@ import org.junit.runners.MethodSorters;
 import org.junit.runners.Parameterized;
 import pages.LoginPage;
 import pages.MainPage;
-import tests.BaseTest;
+import tests.ui.BaseTest;
 
 import java.util.ArrayList;
 import java.util.Arrays;

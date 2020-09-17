@@ -1,0 +1,43 @@
+{
+  "definitions": {},
+  "type": "array",
+  "default": [],
+  "items": {
+    "title": "Items",
+    "type": "object",
+    "required": [
+      "ccy",
+      "base_ccy",
+      "buy",
+      "sale"
+    ],
+    "properties": {
+      "ccy": {
+        "title": "Ccy",
+        "type": "string",
+        "default": ""
+      },
+      "base_ccy": {
+        "title": "Base_ccy",
+        "type": "string",
+        "default": "",
+        "description": "BELOW is a verification of exist UAH or USD in Base_ccy field",
+        "enum": [
+          "UAH",
+          "USD"
+        ]
+      },
+      "buy": {
+        "title": "Buy",
+        "type": "string",
+        "default": "",
+        "pattern": "^.*$"
+      },
+      "sale": {
+        "title": "Sale",
+        "type": "string",
+        "default": ""
+      }
+    }
+  }
+}

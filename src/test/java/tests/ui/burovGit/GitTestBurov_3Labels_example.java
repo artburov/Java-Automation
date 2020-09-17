@@ -1,4 +1,4 @@
-package tests.burovGit;
+package tests.ui.burovGit;
 
 import org.junit.After;
 import org.junit.Before;
@@ -9,34 +9,38 @@ import org.junit.runners.MethodSorters;
 import org.junit.runners.Parameterized;
 import pages.LoginPage;
 import pages.MainPage;
-import tests.BaseTest;
+import tests.ui.BaseTest;
 
+import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
-
-import static helpers.FileReader.loadDataForCreateIssuesProvider;
 
 @RunWith(Parameterized.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class GitTestBurov_CreateIssuesFromFileTxt extends BaseTest {
+public class GitTestBurov_3Labels_example extends BaseTest {
+
 
     private MainPage main;
 
     private final String title;
     private final String comment;
-    private final List<String> labels;
+    private final String labelOne;
+    private final String labelTwo;
+    private final String labelThree;
 
 
     @Parameterized.Parameters
     public static Collection<Object[]> data() {
-
-        return loadDataForCreateIssuesProvider();
+        return Arrays.asList(new Object[][]{
+                {"Test issue", "Testing of addition a comment", "bug", "documentation", "question"},
+        });
     }
 
-    public GitTestBurov_CreateIssuesFromFileTxt(String title, String comment, List<String> labels) {
+    public GitTestBurov_3Labels_example(String title, String comment, String label1, String label2, String label3) {
         this.title = title;
         this.comment = comment;
-        this.labels = labels;
+        labelOne = label1;
+        labelTwo = label2;
+        labelThree = label3;
     }
 
 
@@ -51,7 +55,7 @@ public class GitTestBurov_CreateIssuesFromFileTxt extends BaseTest {
                 .searchBurovRepo()
                 .openProjectsIssues()
                 .clickOnNewIssueBtn()
-                .createIssue(this.title, this.comment, this.labels)
+//                .createIssue(this.title, this.comment, this.labelOne, this.labelTwo, this.labelThree)
                 .openProjectsIssues()
                 .verifyIssueTitle()
                 .openProjectsIssues()
@@ -63,4 +67,3 @@ public class GitTestBurov_CreateIssuesFromFileTxt extends BaseTest {
         this.main.signOut();
     }
 }
-
