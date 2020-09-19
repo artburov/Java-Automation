@@ -11,7 +11,7 @@ import org.junit.Before;
 
 import static org.hamcrest.CoreMatchers.*;
 
-public abstract class BasePrivatApiTest {
+public abstract class BasePrivatApi {
     protected Logger log = LogManager.getLogger(this.getClass().getName());
 
     protected RequestSpecification reqSpec;
@@ -22,13 +22,11 @@ public abstract class BasePrivatApiTest {
     public void setUp() {
         this.reqSpec = new RequestSpecBuilder()
                 .setBaseUri("https://api.privatbank.ua/p24api")
-                .addQueryParam("json")
-                .addQueryParam("exchange")
                 .build();
         this.resSpec = new ResponseSpecBuilder()
                 .expectStatusCode(200)
-                //Assert that at least one base_ccy equal to USD
-                .expectBody("base_ccy", hasItem(equalTo("USD")))
+                /*//Assert that at least one base_ccy equal to USD
+                .expectBody("base_ccy", hasItem(equalTo("USD")))*/
                 .build();
     }
 }

@@ -7,12 +7,16 @@ import java.io.File;
 import static io.restassured.RestAssured.given;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
 
-public class PrivatApiTest extends BasePrivatApiTest {
+public class getPrivatExchangeRateArchiveTest extends BasePrivatApi {
 
 
     @Test
     public void getPrivateExchangeRateArchive() {
-        given().spec(reqSpec).queryParam("coursid", 5)
+        given()
+                .spec(reqSpec)
+                .queryParam("json")
+                .queryParam("exchange")
+                .queryParam("coursid", 5) // https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5
 
                 .when()
                 .log()
