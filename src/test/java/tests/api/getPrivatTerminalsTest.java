@@ -1,5 +1,6 @@
 package tests.api;
 
+import io.qameta.allure.*;
 import org.junit.Test;
 
 import static io.restassured.RestAssured.given;
@@ -7,6 +8,16 @@ import static org.hamcrest.CoreMatchers.*;
 
 public class getPrivatTerminalsTest extends BasePrivatApi {
 
+    @Owner("artburov")
+    @Feature("Privat terminals")
+    @Story("Privat terminals in Zaporozhye")
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("Testing some specific Privat's terminal")
+    @TmsLink("JIRA-1234")
+    @TmsLinks({@TmsLink("JIRA-777"), @TmsLink("JIRA-888")})
+    @Link("Link to the bug report or something else")
+    @Issue("Link to the created issue")
+    @Issues(@Issue("more issue links"))
     @Test
     public void getPrivateBankomats() {
         given()

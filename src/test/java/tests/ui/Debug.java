@@ -53,6 +53,7 @@ public class Debug {
                 String[] temp = x.split(":");
                 saveData.put(temp[0], temp[1]);
             });
+            System.out.println(System.getProperty("project.build.directory"));
             System.out.println(saveData);
         }
     }

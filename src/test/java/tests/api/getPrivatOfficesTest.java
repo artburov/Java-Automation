@@ -1,5 +1,6 @@
 package tests.api;
 
+import io.qameta.allure.*;
 import org.junit.Test;
 
 import static io.restassured.RestAssured.given;
@@ -7,6 +8,13 @@ import static org.hamcrest.CoreMatchers.hasItem;
 
 public class getPrivatOfficesTest extends BasePrivatApi {
 
+    @Owner("artburov")
+    @Feature("Privat offices")
+    @Story("Privat offices in Zaporozhye")
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("Testing some specific Privat's office")
+    @TmsLink("JIRA-2234")
+    @Issue("Link to the created issue")
     @Test
     public void getPrivateOffices() {
         given()
