@@ -15,7 +15,7 @@ public abstract class BaseTest {
     public void setUp() {
         System.setProperty("webdriver.chrome.driver",
                 System.getProperty("user.dir") +
-                        "/src/main/resources/chromedriver-8404147/chromedriver.exe");
+                        "/src/main/resources/chromedriver-85.0.4183.87/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);

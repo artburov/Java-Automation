@@ -1,27 +1,26 @@
 package tests.api;
 
 import org.junit.Test;
+import tests.api.helpers.MethodHelper;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
 
-public class getPrivatExchangeRateArchiveTest extends BasePrivatApi {
-
+public class getPrivatExchangeRateArchiveTest extends MethodHelper {
 
     @Test
     public void getPrivateExchangeRateArchive() {
-        given()
-                .spec(reqSpec)
-                .queryParam("json")
-                .queryParam("exchange")
-                .queryParam("coursid", 5) // https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5
+        //Create GET test request using map collection with data instead of a given section
+        Map<String, Object> testData = new HashMap<>();
+        testData.put("json", null);
+        testData.put("exchange", null);
+        testData.put("coursid", 5); // https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5
 
-                .when()
-                .log()
-                .all(true)
-                .get("/pubinfo")
+        get(testData, "/pubinfo")
 
                 .then()
                 .log()
