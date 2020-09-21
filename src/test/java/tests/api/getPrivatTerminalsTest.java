@@ -18,6 +18,7 @@ public class getPrivatTerminalsTest extends BasePrivatApi {
     @Link("Link to the bug report or something else")
     @Issue("Link to the created issue")
     @Issues(@Issue("more issue links"))
+    @Step("Get all Privat's terminals in Zaporozhye")
     @Test
     public void getPrivateBankomats() {
         given()

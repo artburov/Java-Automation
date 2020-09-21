@@ -15,6 +15,7 @@ public class getPrivatOfficesTest extends BasePrivatApi {
     @Description("Testing some specific Privat's office")
     @TmsLink("JIRA-2234")
     @Issue("Link to the created issue")
+    @Step("Get all Privat's offices in Zaporozhye")
     @Test
     public void getPrivateOffices() {
         given()

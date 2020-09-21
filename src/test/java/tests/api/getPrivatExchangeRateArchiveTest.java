@@ -1,5 +1,6 @@
 package tests.api;
 
+import io.qameta.allure.Step;
 import org.junit.Test;
 import tests.api.helpers.MethodHelper;
 
@@ -12,6 +13,7 @@ import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
 
 public class getPrivatExchangeRateArchiveTest extends MethodHelper {
 
+    @Step("Get all archive exchange rate of currencies")
     @Test
     public void getPrivateExchangeRateArchive() {
         //Create GET test request using map collection with data instead of a given section
