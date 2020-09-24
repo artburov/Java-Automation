@@ -11,7 +11,7 @@ import java.util.Map;
 import static io.restassured.RestAssured.given;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
 
-public class getPrivatExchangeRateArchiveTest extends MethodHelper {
+public class GetPrivatExchangeRateArchiveTest extends MethodHelper {
 
     @Step("Get all archive exchange rate of currencies")
     @Test

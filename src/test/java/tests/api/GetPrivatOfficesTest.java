@@ -6,7 +6,7 @@ import org.junit.Test;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.hasItem;
 
-public class getPrivatOfficesTest extends BasePrivatApi {
+public class GetPrivatOfficesTest extends BasePrivatApi {
 
     @Owner("artburov")
     @Feature("Privat offices")

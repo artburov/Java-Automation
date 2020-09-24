@@ -6,7 +6,7 @@ import org.junit.Test;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.*;
 
-public class getPrivatTerminalsTest extends BasePrivatApi {
+public class GetPrivatTerminalsTest extends BasePrivatApi {
 
     @Owner("artburov")
     @Feature("Privat terminals")
