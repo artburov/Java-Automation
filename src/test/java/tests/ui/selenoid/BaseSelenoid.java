@@ -17,8 +17,8 @@ public class BaseSelenoid {
     public void SetUp() throws MalformedURLException {
         /* Can be parametrized from Jenkins -> clean test -Dbrowser=${BROWSER} or just from edit configuration */
 
-        //Manual select browser, ex. firefox, chrome, opera into ""
-        System.setProperty("browser", "");
+        //Manual select browser, ex. firefox, chrome into "" for LOCAL TESTING or add browser to edit configuration
+        //System.setProperty("browser", "");
         String selectedBrowser = System.getProperty("browser");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
