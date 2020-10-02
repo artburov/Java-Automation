@@ -1,0 +1,7 @@
+Test issueTXT1, Testing of addition a comment, bug
+Test issueTXT2, Testing of addition a comment, documentation
+Test issueTXT3, Testing of addition a comment, question
+Test issueTXT4, Testing of addition a comment, bug;documentation
+Test issueTXT5, Testing of addition a comment, bug;question
+Test issueTXT6, Testing of addition a comment, documentation;question
+Test issueTXT7, Testing of addition a comment, bug;documentation;question
